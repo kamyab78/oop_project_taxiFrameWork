@@ -7,12 +7,22 @@ import javax.persistence.*;
 @Table
 public class ReserveModel {
     @Id
-    @SequenceGenerator(name = "filmSeq", sequenceName = "film_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "filmSeq")
     private Long id;
     private String city;
     private Long cost;
     private String distanse;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel userModel;
+
+    public UserModel getUserModel() {
+        return userModel;
+    }
+
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
+    }
 
     public Long getId() {
         return id;
