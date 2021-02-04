@@ -7,14 +7,17 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 
 @RestController
 @RequestMapping("/user")
-public class TripReserveController {
+public class TripController {
     @Autowired
     private UserService userService;
 
-    public TripReserveController(UserService userService){
+    public TripController(UserService userService){
         this.userService=userService;
     }
     @PostMapping("/reserve")
@@ -22,6 +25,13 @@ public class TripReserveController {
     public ResponseObject Reserve(@RequestBody ReserveModel reserveModel){
         userService.Reserve(reserveModel);
         return new ResponseObject(null,1);
+    }
+    @GetMapping("/GetHistory/{id}")
+    //idie user manzorame
+    @ResponseBody
+    public ResponseObject GetHistory(@PathVariable int id){
+       List<String> list = userService.GetHistoryOfTrip(id);
+        return new ResponseObject(list,1);
     }
 
 }

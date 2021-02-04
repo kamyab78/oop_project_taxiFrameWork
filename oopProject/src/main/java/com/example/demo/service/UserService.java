@@ -6,6 +6,10 @@ import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class UserService {
     @Autowired
@@ -16,4 +20,16 @@ UserRepository userRepository;
         reserveRepository.save(reserveModel);
     }
     public void createAccount(UserModel userModel){userRepository.save(userModel);}
+
+
+    public List GetHistoryOfTrip(int id){
+        List<ReserveModel> reserveList =new ArrayList<>();
+        Iterable<ReserveModel>  reserve =reserveRepository.findAll();
+        for (ReserveModel reserveModel : reserve) {
+            if (reserveModel.getUserModel().getId().equals(id)){
+                reserveList.add(reserveModel);
+            }
+        }
+        return reserveList;
+    }
 }
