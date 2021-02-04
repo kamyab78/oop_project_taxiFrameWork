@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "reserve")
 @Table
@@ -15,6 +16,12 @@ public class ReserveModel {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel userModel;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "type_trip", joinColumns = @JoinColumn(name = "id"))
+    @Enumerated(EnumType.STRING)
+    private TypeTripModel typeTripModel;
+
 
     public UserModel getUserModel() {
         return userModel;
