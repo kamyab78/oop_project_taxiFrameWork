@@ -53,7 +53,7 @@ private int delay;
     private List<UserModel> userModel;
     @ManyToOne
     @JoinColumn(name = "driver_id")
-    private DriverModel driverModel;
+    private DriverModel driverModel ;
     @Enumerated(EnumType.STRING)
     private TypeTripModel typeTripModel;
     public TypeTripModel getTypeTripModel() {
@@ -125,4 +125,6 @@ private int delay;
     }
 
     private String number;
+
+
 }

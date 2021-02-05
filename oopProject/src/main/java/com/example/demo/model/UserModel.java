@@ -40,6 +40,14 @@ public class UserModel {
     @JoinColumn(name = "id")
     private PaymentModel paymentModel;
 
+    public WalletModel getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(WalletModel wallet) {
+        this.wallet = wallet;
+    }
+
     @OneToOne
     @JoinColumn(name = "id")
     private WalletModel wallet;
