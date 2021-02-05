@@ -2,12 +2,13 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 
-@Entity(name = "payment")
-@Table
+@Entity
+@Table(name="payment", schema = "ReservDB")
 public class PaymentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "cost")
     private Long cost;
     @OneToOne
     @JoinColumn(name = "user_id")

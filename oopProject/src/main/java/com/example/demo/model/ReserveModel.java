@@ -4,17 +4,22 @@ package com.example.demo.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "reserve")
-@Table
+@Entity
+@Table(name="reserve", schema = "ReservDB")
 public class ReserveModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "city")
     private String city;
+    @Column(name = "cost")
     private Long cost;
+    @Column(name = "distanse")
     private String distanse;
-private Long start_time;
-private int delay;
+    @Column(name = "start_time")
+    private Long start_time;
+    @Column(name = "delay")
+    private int delay;
 
     public Long getStart_time() {
         return start_time;

@@ -2,13 +2,18 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 
-@Entity(name = "wallet")
-@Table
+@Entity
+@Table(name="wallet", schema = "ReservDB")
 public class WalletModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "amount")
     private Long amount;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserModel userModel;
 
     public Long getId() {
         return id;
@@ -34,7 +39,4 @@ public class WalletModel {
         this.userModel = userModel;
     }
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private UserModel userModel;
 }

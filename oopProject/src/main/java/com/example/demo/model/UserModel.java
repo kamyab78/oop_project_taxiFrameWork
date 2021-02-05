@@ -3,29 +3,35 @@ package com.example.demo.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "user")
-@Table(name = "my_user")
+@Entity
+@Table(name="user", schema = "ReservDB")
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "username")
     private String username;
+    @Column(name = "pass")
     private String pass;
     @Column(name = "name")
     private String name;
+    @Column(name = "family")
     private String family;
 
-    public List<ReserveModel> getReserveModels() {
-        return reserveModels;
-    }
-
-    public void setReserveModels(List<ReserveModel> reserveModels) {
-        this.reserveModels = reserveModels;
-    }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "reserve_id")
     private List<ReserveModel> reserveModels;
+
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    private PaymentModel paymentModel;
+
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    private WalletModel wallet;
 
     public PaymentModel getPaymentModel() {
         return paymentModel;
@@ -36,10 +42,6 @@ public class UserModel {
     }
 
 
-    @OneToOne
-    @JoinColumn(name = "id")
-    private PaymentModel paymentModel;
-
     public WalletModel getWallet() {
         return wallet;
     }
@@ -48,11 +50,13 @@ public class UserModel {
         this.wallet = wallet;
     }
 
-    @OneToOne
-    @JoinColumn(name = "id")
-    private WalletModel wallet;
+    public List<ReserveModel> getReserveModels() {
+        return reserveModels;
+    }
 
-
+    public void setReserveModels(List<ReserveModel> reserveModels) {
+        this.reserveModels = reserveModels;
+    }
 
     public Long getId() {
         return id;
