@@ -20,7 +20,9 @@ UserRepository userRepository;
         reserveRepository.save(reserveModel);
     }
     public void createAccount(UserModel userModel){userRepository.save(userModel);}
-
+public void SharedReserve(ReserveModel reserveModel){
+        reserveRepository.save(reserveModel);
+}
 
     public List GetHistoryOfTrip(int id){
         List<ReserveModel> reserveList =new ArrayList<>();
