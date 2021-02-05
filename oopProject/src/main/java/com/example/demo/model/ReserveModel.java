@@ -4,17 +4,22 @@ package com.example.demo.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "reserve")
-@Table
+@Entity
+@Table(name="reserve", schema = "public")
 public class ReserveModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "city")
     private String city;
+    @Column(name = "cost")
     private Long cost;
+    @Column(name = "distanse")
     private String distanse;
-private Long start_time;
-private int delay;
+    @Column(name = "start_time")
+    private Long start_time;
+    @Column(name = "delay")
+    private int delay;
 
     public Long getStart_time() {
         return start_time;
@@ -32,11 +37,11 @@ private int delay;
         this.delay = delay;
     }
 
-    public List<UserModel> getUserModel() {
+    public UserModel getUserModel() {
         return userModel;
     }
 
-    public void setUserModel(List<UserModel> userModel) {
+    public void setUserModel(UserModel userModel) {
         this.userModel = userModel;
     }
 
@@ -48,14 +53,19 @@ private int delay;
         this.driverModel = driverModel;
     }
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private List<UserModel> userModel;
+    private UserModel userModel;
     @ManyToOne
     @JoinColumn(name = "driver_id")
     private DriverModel driverModel ;
-    @Enumerated(EnumType.STRING)
+
+
+    @OneToOne
+    @JoinColumn(name = "type_trip")
     private TypeTripModel typeTripModel;
+
+
     public TypeTripModel getTypeTripModel() {
         return typeTripModel;
     }
@@ -116,15 +126,7 @@ private int delay;
         this.distanse = distanse;
     }
 
-    public String getNumber() {
-        return number;
-    }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    private String number;
 
 
 }

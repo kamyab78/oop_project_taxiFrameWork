@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ReserveDto;
 import com.example.demo.model.ReserveModel;
 import com.example.demo.model.ResponseObject;
 import com.example.demo.model.UserModel;
@@ -22,8 +23,8 @@ public class TripController {
     }
     @PostMapping("/reserve")
     @ResponseBody
-    public ResponseObject Reserve(@RequestBody ReserveModel reserveModel){
-        userService.Reserve(reserveModel);
+    public ResponseObject Reserve(@RequestBody ReserveDto reserveDto){
+         userService.Reserve(reserveDto);
         return new ResponseObject(null,1);
     }
     @GetMapping("/GetHistory/{id}")
@@ -33,11 +34,11 @@ public class TripController {
        List<String> list = userService.GetHistoryOfTrip(id);
         return new ResponseObject(list,1);
     }
-    @PostMapping("/reserve/shared")
-    @ResponseBody
-    public ResponseObject SharedReserve(@RequestBody ReserveModel reserveModel){
-        userService.SharedReserve(reserveModel);
-        return new ResponseObject(null,1);
-    }
+//    @PostMapping("/reserve/shared")
+//    @ResponseBody
+//    public ResponseObject SharedReserve(@RequestBody ReserveModel reserveModel){
+//        userService.SharedReserve(reserveModel);
+//        return new ResponseObject(null,1);
+//    }
 
 }

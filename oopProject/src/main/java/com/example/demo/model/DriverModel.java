@@ -3,47 +3,36 @@ package com.example.demo.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "driver")
-@Table
+@Entity
+@Table(name="driver", schema = "public")
 public class DriverModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name="username")
     private String username;
+    @Column(name = "pass")
     private String pass;
     @Column(name = "name")
     private String name;
+    @Column(name = "family")
     private String family;
-private String carinfo;
-private String sex;
+    @Column(name = "carinfo")
+    private String carinfo;
+    @Column(name = "sex")
+    private String sex;
 
-    public String getCarinfo() {
-        return carinfo;
-    }
-
-    public void setCarinfo(String carinfo) {
-        this.carinfo = carinfo;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public List<ReserveModel> getReserveModels() {
-        return reserveModels;
-    }
-
-    public void setReserveModels(List<ReserveModel> reserveModels) {
-        this.reserveModels = reserveModels;
-    }
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "reserve_id")
     private List<ReserveModel> reserveModels;
+
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    private PaymentModel paymentModel;
+
+
 
     public PaymentModel getPaymentModel() {
         return paymentModel;
@@ -52,14 +41,6 @@ private String sex;
     public void setPaymentModel(PaymentModel paymentModel) {
         this.paymentModel = paymentModel;
     }
-
-    //
-    @OneToOne
-    @JoinColumn(name = "id")
-    private PaymentModel paymentModel;
-
-
-
 
     public Long getId() {
         return id;
@@ -99,6 +80,29 @@ private String sex;
 
     public void setFamily(String family) {
         this.family = family;
+    }
+    public String getCarinfo() {
+        return carinfo;
+    }
+
+    public void setCarinfo(String carinfo) {
+        this.carinfo = carinfo;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public List<ReserveModel> getReserveModels() {
+        return reserveModels;
+    }
+
+    public void setReserveModels(List<ReserveModel> reserveModels) {
+        this.reserveModels = reserveModels;
     }
 
 
