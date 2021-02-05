@@ -7,8 +7,7 @@ import java.util.List;
 @Table(name = "my_user")
 public class UserModel {
     @Id
-    @SequenceGenerator(name = "userSeq", sequenceName = "user_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "userSeq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String pass;
@@ -36,7 +35,7 @@ public class UserModel {
         this.paymentModel = paymentModel;
     }
 
-    //
+
     @OneToOne
     @JoinColumn(name = "id")
     private PaymentModel paymentModel;

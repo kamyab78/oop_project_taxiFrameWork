@@ -8,6 +8,7 @@ import java.util.List;
 @Table
 public class ReserveModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String city;
     private Long cost;

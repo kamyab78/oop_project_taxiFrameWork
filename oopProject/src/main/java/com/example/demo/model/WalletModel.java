@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table
 public class WalletModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long amount;
 
