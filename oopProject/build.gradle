@@ -17,6 +17,9 @@ dependencies {
     implementation ('org.springframework.boot:spring-boot-starter-web-services') {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    compile "io.springfox:springfox-bean-validators:2.9.2"
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
