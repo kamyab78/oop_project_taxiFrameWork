@@ -26,8 +26,11 @@ UserRepository userRepository;
         List<ReserveModel> reserveList =new ArrayList<>();
         Iterable<ReserveModel>  reserve =reserveRepository.findAll();
         for (ReserveModel reserveModel : reserve) {
-            if (reserveModel.getUserModel().getId().equals(id)){
-                reserveList.add(reserveModel);
+            for (int i = 0; i <reserveModel.getUserModel().size() ; i++) {
+
+                if (reserveModel.getUserModel().get(i).getId().equals(id)){
+                    reserveList.add(reserveModel);
+                }
             }
         }
         return reserveList;

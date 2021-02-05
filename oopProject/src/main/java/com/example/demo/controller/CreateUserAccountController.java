@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
-public class CreateAccountController {
+public class CreateUserAccountController {
     @Autowired
     private UserService userService;
 
-    public CreateAccountController(UserService userService){
+    public CreateUserAccountController(UserService userService){
         this.userService=userService;
     }
     @PostMapping("/createAccount")

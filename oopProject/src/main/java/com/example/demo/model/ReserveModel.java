@@ -12,24 +12,73 @@ public class ReserveModel {
     private String city;
     private Long cost;
     private String distanse;
+private Long start_time;
+private int delay;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserModel userModel;
+    public Long getStart_time() {
+        return start_time;
+    }
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "type_trip", joinColumns = @JoinColumn(name = "id"))
-    @Enumerated(EnumType.STRING)
-    private TypeTripModel typeTripModel;
+    public void setStart_time(Long start_time) {
+        this.start_time = start_time;
+    }
 
+    public int getDelay() {
+        return delay;
+    }
 
-    public UserModel getUserModel() {
+    public void setDelay(int delay) {
+        this.delay = delay;
+    }
+
+    public List<UserModel> getUserModel() {
         return userModel;
     }
 
-    public void setUserModel(UserModel userModel) {
+    public void setUserModel(List<UserModel> userModel) {
         this.userModel = userModel;
     }
+
+    public DriverModel getDriverModel() {
+        return driverModel;
+    }
+
+    public void setDriverModel(DriverModel driverModel) {
+        this.driverModel = driverModel;
+    }
+
+    @ManyToMany
+    @JoinColumn(name = "user_id")
+    private List<UserModel> userModel;
+    @ManyToOne
+    @JoinColumn(name = "driver_id")
+    private DriverModel driverModel;
+    @Enumerated(EnumType.STRING)
+    private TypeTripModel typeTripModel;
+    public TypeTripModel getTypeTripModel() {
+        return typeTripModel;
+    }
+    @OneToOne
+    @JoinColumn(name = "id")
+    private PaymentModel paymentModel;
+
+    public PaymentModel getPaymentModel() {
+        return paymentModel;
+    }
+
+    public void setPaymentModel(PaymentModel paymentModel) {
+        this.paymentModel = paymentModel;
+    }
+
+    public void setTypeTripModel(TypeTripModel typeTripModel) {
+        this.typeTripModel = typeTripModel;
+    }
+
+
+
+
+
+
 
     public Long getId() {
         return id;

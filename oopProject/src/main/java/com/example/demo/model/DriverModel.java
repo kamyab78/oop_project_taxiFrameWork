@@ -3,18 +3,34 @@ package com.example.demo.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "user")
-@Table(name = "my_user")
-public class UserModel {
+@Entity(name = "driver")
+@Table
+public class DriverModel {
     @Id
-    @SequenceGenerator(name = "userSeq", sequenceName = "user_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "userSeq")
     private Long id;
     private String username;
     private String pass;
     @Column(name = "name")
     private String name;
     private String family;
+private String carinfo;
+private String sex;
+
+    public String getCarinfo() {
+        return carinfo;
+    }
+
+    public void setCarinfo(String carinfo) {
+        this.carinfo = carinfo;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
     public List<ReserveModel> getReserveModels() {
         return reserveModels;
@@ -24,7 +40,7 @@ public class UserModel {
         this.reserveModels = reserveModels;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "reserve_id")
     private List<ReserveModel> reserveModels;
 
@@ -41,9 +57,6 @@ public class UserModel {
     @JoinColumn(name = "id")
     private PaymentModel paymentModel;
 
-    @OneToOne
-    @JoinColumn(name = "id")
-    private WalletModel wallet;
 
 
 
