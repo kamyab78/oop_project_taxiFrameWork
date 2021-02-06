@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.WalletRequestDTO;
 import com.example.demo.model.PaymentModel;
 import com.example.demo.model.ResponseObject;
 import com.example.demo.model.WalletModel;
@@ -17,8 +18,8 @@ public WalletController(WalletService walletService){
 }
     @PostMapping("/sharj")
     @ResponseBody
-    public ResponseObject payment(@RequestBody WalletModel walletModel){
-        walletService.sharjing(walletModel);
+    public ResponseObject payment(@RequestBody WalletModel wallletModel){
+        walletService.sharjing(wallletModel);
         return new ResponseObject(null,1);
     }
 }

@@ -27,8 +27,8 @@ public class PaymentController {
 
     @PostMapping("/payment/wallet/{cost}/{uid}")
     @ResponseBody
-    public ResponseObject paymentWithWallet(@PathVariable Long uid ,  Long cost){
-        paymentService.paywithwallet(uid, cost);
+    public ResponseObject paymentWithWallet(@PathVariable Long uid ,  long cost){
+        paymentService.paywithwallet(cost, uid);
         return new ResponseObject(null,1);
     }
 }

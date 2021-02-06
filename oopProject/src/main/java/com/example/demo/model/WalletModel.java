@@ -8,21 +8,25 @@ public class WalletModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "amount")
     private Long amount;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserModel userModel;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long idRow) {
+    public void setId(long idRow) {
         this.id = idRow;
     }
 
-    public Long getAmount() {
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(long amount) {
         this.amount = amount;
     }
 
@@ -34,7 +38,5 @@ public class WalletModel {
         this.userModel = userModel;
     }
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private UserModel userModel;
+
 }

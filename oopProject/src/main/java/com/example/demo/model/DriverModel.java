@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="driver", schema = "public")
+@Table(name="driver", schema = "")
 public class DriverModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @Column(name="username")
     private String username;
     @Column(name = "pass")
@@ -29,7 +29,7 @@ public class DriverModel {
 
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "payment_id")
     private PaymentModel paymentModel;
 
 
@@ -42,11 +42,11 @@ public class DriverModel {
         this.paymentModel = paymentModel;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

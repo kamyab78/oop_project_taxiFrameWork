@@ -19,7 +19,7 @@ public class UserModel {
     private String family;
 
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "reserve_id")
     private List<ReserveModel> reserveModels;
 

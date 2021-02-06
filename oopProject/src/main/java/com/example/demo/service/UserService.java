@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.CreateAcoountUserDto;
 import com.example.demo.dto.ReserveDto;
 import com.example.demo.model.*;
 import com.example.demo.repository.*;
@@ -35,10 +36,15 @@ UserRepository userRepository;
         System.out.println(randomNum);
         reserveModel.setDriverModel(driverModels.get(randomNum));
         Optional <TypeTripModel> typeTripModel=typeTripRepository.findById(reserveDto.getTypeTripid());
-        reserveModel.setTypeTripModel(typeTripModel.get());
+        System.out.println(typeTripModel);
         reserveRepository.save(reserveModel);
     }
-    public void createAccount(UserModel userModel){
+    public void createAccount(CreateAcoountUserDto createAcoountUserDto){
+        UserModel userModel=new UserModel();
+        userModel.setUsername(createAcoountUserDto.getUsername());
+        userModel.setFamily(createAcoountUserDto.getFamily());
+        userModel.setName(createAcoountUserDto.getName());
+        userModel.setPass(createAcoountUserDto.getPass());
 //        Wallet
 //       userModel.setWallet();
         userRepository.save(userModel);}
@@ -50,9 +56,9 @@ UserRepository userRepository;
         List<ReserveModel> reserveList =new ArrayList<>();
         Iterable<ReserveModel>  reserve =reserveRepository.findAll();
         for (ReserveModel reserveModel : reserve) {
-
-
-                if (reserveModel.getUserModel().getId().equals(id)){
+            System.out.println(reserveModel.getUserModel().getId());
+            System.out.println(id);
+                if (reserveModel.getUserModel().getId()==id){
                     reserveList.add(reserveModel);
 
             }

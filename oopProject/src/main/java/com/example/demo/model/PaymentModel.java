@@ -3,7 +3,7 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="payment", schema = "public")
+@Table(name="payment", schema = "")
 public class PaymentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,19 +17,19 @@ public class PaymentModel {
     @JoinColumn(name = "reserve_id")
     private ReserveModel reserveModel;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Long getCost() {
+    public long getCost() {
         return cost;
     }
 
-    public void setCost(Long amount) {
+    public void setCost(long amount) {
         this.cost = amount;
     }
 

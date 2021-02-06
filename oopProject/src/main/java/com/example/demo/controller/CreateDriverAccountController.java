@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.CreateAcoountDriverDto;
 import com.example.demo.model.DriverModel;
 import com.example.demo.model.ResponseObject;
 import com.example.demo.model.UserModel;
@@ -19,8 +20,8 @@ public class CreateDriverAccountController {
     }
     @PostMapping("/createAccount")
     @ResponseBody
-    public ResponseObject createAccount(@RequestBody DriverModel driverModel){
-        driverService.createAccount(driverModel);
+    public ResponseObject createAccount(@RequestBody CreateAcoountDriverDto createAcoountDriverDto){
+        driverService.createAccount(createAcoountDriverDto);
         return new ResponseObject(null,1);
     }
 }

@@ -25,7 +25,7 @@ public class TripController {
     @ResponseBody
     public ResponseObject Reserve(@RequestBody ReserveDto reserveDto){
          userService.Reserve(reserveDto);
-        return new ResponseObject(null,1);
+        return new ResponseObject(("successfully Reserved"),200);
     }
     @GetMapping("/GetHistory/{id}")
     //idie user manzorame

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.CreateAcoountUserDto;
 import com.example.demo.model.ResponseObject;
 import com.example.demo.model.UserModel;
 import com.example.demo.service.UserService;
@@ -17,8 +18,8 @@ public class CreateUserAccountController {
     }
     @PostMapping("/createAccount")
     @ResponseBody
-    public ResponseObject createAccount(@RequestBody UserModel userModel){
-        userService.createAccount(userModel);
+    public ResponseObject createAccount(@RequestBody CreateAcoountUserDto createAcoountUserDto){
+        userService.createAccount(createAcoountUserDto);
         return new ResponseObject(null,1);
     }
 }

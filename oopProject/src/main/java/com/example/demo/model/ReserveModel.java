@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="reserve", schema = "public")
+@Table(name="reserve", schema = "")
 public class ReserveModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,21 +19,21 @@ public class ReserveModel {
     @Column(name = "start_time")
     private Long start_time;
     @Column(name = "delay")
-    private int delay;
+    private Long delay;
 
-    public Long getStart_time() {
+    public long getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Long start_time) {
+    public void setStart_time(long start_time) {
         this.start_time = start_time;
     }
 
-    public int getDelay() {
+    public long getDelay() {
         return delay;
     }
 
-    public void setDelay(int delay) {
+    public void setDelay(long delay) {
         this.delay = delay;
     }
 
