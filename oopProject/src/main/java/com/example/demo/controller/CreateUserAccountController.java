@@ -20,6 +20,6 @@ public class CreateUserAccountController {
     @ResponseBody
     public ResponseObject createAccount(@RequestBody CreateAcoountUserDto createAcoountUserDto){
         userService.createAccount(createAcoountUserDto);
-        return new ResponseObject(null,1);
+        return new ResponseObject("Account Successfuly create",200);
     }
 }

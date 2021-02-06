@@ -26,7 +26,7 @@ public class PaymentController {
     @ResponseBody
     public ResponseObject payment(@RequestBody PaymentDto paymentDto){
         paymentService.pay(paymentDto);
-        return new ResponseObject(null,1);
+        return new ResponseObject("Payment Successfuly ",200);
     }
 
 
@@ -34,6 +34,6 @@ public class PaymentController {
     @ResponseBody
     public ResponseObject paymentWithWallet(@RequestBody PayWithWalletDto payWithWalletDto){
         paymentService.paywithwallet(payWithWalletDto);
-        return new ResponseObject(null,1);
+        return new ResponseObject("Payment Successfuly ",200);
     }
 }

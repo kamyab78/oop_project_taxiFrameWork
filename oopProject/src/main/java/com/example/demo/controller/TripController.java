@@ -31,7 +31,7 @@ public class TripController {
     //idie user manzorame
     @ResponseBody
     public ResponseObject GetHistory(@PathVariable int id){
-       List<ReserveModel> list = userService.GetHistoryOfTrip(id);
+       List<String> list = userService.GetHistoryOfTrip(id);
         return new ResponseObject( list , 1);
     }
 //    @PostMapping("/reserve/shared")

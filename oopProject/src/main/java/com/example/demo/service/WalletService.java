@@ -8,6 +8,7 @@ import com.example.demo.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,10 +18,22 @@ public class WalletService {
     @Autowired
     UserRepository userRepository;
     public void sharjing(WalletRequestDTO walletRequestDTO){
-        WalletModel walletModel =new WalletModel();
-        walletModel.setAmount(walletRequestDTO.getAmount());
-        Optional<UserModel> userModels = userRepository.findById(walletRequestDTO.getUid());
-        walletModel.setUserModel(userModels.get());
-        walletRepository.save(walletModel);
+
+        List<WalletModel> walletModel =walletRepository.findWalletbyid(walletRequestDTO.getUid());
+        if(walletModel.size()!=0){
+
+                walletModel.get(0).setAmount(walletModel.get(0).getAmount()+walletRequestDTO.getAmount());
+                walletRepository.save(walletModel.get(0));
+
+        }
+        else{
+            WalletModel walletModel1 =new WalletModel();
+
+            walletModel1.setAmount(walletRequestDTO.getAmount());
+            Optional<UserModel> userModels = userRepository.findById(walletRequestDTO.getUid());
+            walletModel1.setUserModel(userModels.get());
+            walletRepository.save(walletModel1);
+        }
+
     }
 }

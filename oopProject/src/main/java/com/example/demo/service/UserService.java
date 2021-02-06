@@ -26,17 +26,20 @@ UserRepository userRepository;
         reserveModel.setCity(reserveDto.getCity());
         reserveModel.setCost(reserveDto.getCost());
         reserveModel.setDelay(reserveDto.getDelay());
+        reserveModel.setStart_time(reserveDto.getStart_time());
+
         reserveModel.setDistanse(reserveDto.getDistanse());
         Optional<UserModel> userModels = userRepository.findById(reserveDto.getUid());
-
+        Optional <TypeTripModel> typeTripModel=typeTripRepository.findById(reserveDto.getTypeTripid());
+        System.out.println(typeTripModel);
+        reserveModel.setTypeTripModel(typeTripModel.get());
         reserveModel.setUserModel(userModels.get());
         List<DriverModel> driverModels = driverRepository.findAll();
         Random rn =new Random();
        int randomNum= rn.nextInt(driverModels.size() - 1 + 1) ;
         System.out.println(randomNum);
         reserveModel.setDriverModel(driverModels.get(randomNum));
-        Optional <TypeTripModel> typeTripModel=typeTripRepository.findById(reserveDto.getTypeTripid());
-        System.out.println(typeTripModel);
+
         reserveRepository.save(reserveModel);
     }
     public void createAccount(CreateAcoountUserDto createAcoountUserDto){
@@ -52,13 +55,13 @@ UserRepository userRepository;
 //        reserveRepository.save(reserveModel);
 //}
 
-    public List<ReserveModel> GetHistoryOfTrip(int id){
-        List<ReserveModel> reserveList =new ArrayList<>();
+    public List<String> GetHistoryOfTrip(int id){
+        List<String> reserveList =new ArrayList<>();
         Iterable<ReserveModel>  reserve =reserveRepository.findAll();
         for (ReserveModel reserveModel : reserve) {
 
                 if (reserveModel.getUserModel().getId()==id){
-                    reserveList.add(reserveModel);
+                    reserveList.add(reserveModel.getCity());
 
             }
         }

@@ -20,6 +20,6 @@ public WalletController(WalletService walletService){
     @ResponseBody
     public ResponseObject payment(@RequestBody WalletRequestDTO walletRequestDTO){
         walletService.sharjing(walletRequestDTO);
-        return new ResponseObject(null,1);
+        return new ResponseObject("Sharj Successfuly ",200);
     }
 }

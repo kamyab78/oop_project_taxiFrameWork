@@ -22,6 +22,6 @@ public class CreateDriverAccountController {
     @ResponseBody
     public ResponseObject createAccount(@RequestBody CreateAcoountDriverDto createAcoountDriverDto){
         driverService.createAccount(createAcoountDriverDto);
-        return new ResponseObject(null,1);
+        return new ResponseObject("Account Successfuly create",200);
     }
 }
