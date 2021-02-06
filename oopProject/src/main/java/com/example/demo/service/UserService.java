@@ -52,12 +52,11 @@ UserRepository userRepository;
 //        reserveRepository.save(reserveModel);
 //}
 
-    public List GetHistoryOfTrip(int id){
+    public List<ReserveModel> GetHistoryOfTrip(int id){
         List<ReserveModel> reserveList =new ArrayList<>();
         Iterable<ReserveModel>  reserve =reserveRepository.findAll();
         for (ReserveModel reserveModel : reserve) {
-            System.out.println(reserveModel.getUserModel().getId());
-            System.out.println(id);
+
                 if (reserveModel.getUserModel().getId()==id){
                     reserveList.add(reserveModel);
 

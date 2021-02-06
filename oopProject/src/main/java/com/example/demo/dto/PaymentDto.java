@@ -1,10 +1,10 @@
 package com.example.demo.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class WalletRequestDTO {
-    int amount;
+public class PaymentDto {
+    Long cost;
     Long uid;
+    Long Reserveid;
 }

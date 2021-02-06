@@ -2,8 +2,8 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 
-@Entity(name = "wallet")
-@Table
+@Entity
+@Table(name = "wallet", schema = "", catalog = "")
 public class WalletModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,12 +14,16 @@ public class WalletModel {
     @JoinColumn(name = "user_id")
     private UserModel userModel;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long idRow) {
-        this.id = idRow;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
     public long getAmount() {

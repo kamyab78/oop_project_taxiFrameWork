@@ -7,6 +7,7 @@ public class ResponseObject {
         this.object = object;
         this.status = status;
     }
+
     public Object getObject() {
         return this.object;
     }

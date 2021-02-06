@@ -1,12 +1,17 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.PayWithWalletDto;
+import com.example.demo.dto.PaymentDto;
 import com.example.demo.model.PaymentModel;
 import com.example.demo.model.ReserveModel;
 import com.example.demo.model.ResponseObject;
 import com.example.demo.service.PaymentService;
 import com.example.demo.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("")
@@ -19,16 +24,16 @@ public class PaymentController {
     }
     @PostMapping("/payment")
     @ResponseBody
-    public ResponseObject payment(@RequestBody PaymentModel paymentModel){
-        paymentService.pay(paymentModel);
+    public ResponseObject payment(@RequestBody PaymentDto paymentDto){
+        paymentService.pay(paymentDto);
         return new ResponseObject(null,1);
     }
 
 
-    @PostMapping("/payment/wallet/{cost}/{uid}")
+    @PostMapping("/payment/wallet")
     @ResponseBody
-    public ResponseObject paymentWithWallet(@PathVariable Long uid ,  long cost){
-        paymentService.paywithwallet(cost, uid);
+    public ResponseObject paymentWithWallet(@RequestBody PayWithWalletDto payWithWalletDto){
+        paymentService.paywithwallet(payWithWalletDto);
         return new ResponseObject(null,1);
     }
 }

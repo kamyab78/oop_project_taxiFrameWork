@@ -18,8 +18,8 @@ public WalletController(WalletService walletService){
 }
     @PostMapping("/sharj")
     @ResponseBody
-    public ResponseObject payment(@RequestBody WalletModel wallletModel){
-        walletService.sharjing(wallletModel);
+    public ResponseObject payment(@RequestBody WalletRequestDTO walletRequestDTO){
+        walletService.sharjing(walletRequestDTO);
         return new ResponseObject(null,1);
     }
 }

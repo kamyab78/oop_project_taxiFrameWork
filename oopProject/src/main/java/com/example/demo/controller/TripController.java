@@ -25,14 +25,14 @@ public class TripController {
     @ResponseBody
     public ResponseObject Reserve(@RequestBody ReserveDto reserveDto){
          userService.Reserve(reserveDto);
-        return new ResponseObject(("successfully Reserved"),200);
+        return new ResponseObject("reserved",200);
     }
     @GetMapping("/GetHistory/{id}")
     //idie user manzorame
     @ResponseBody
     public ResponseObject GetHistory(@PathVariable int id){
-       List<String> list = userService.GetHistoryOfTrip(id);
-        return new ResponseObject(list,1);
+       List<ReserveModel> list = userService.GetHistoryOfTrip(id);
+        return new ResponseObject( list , 1);
     }
 //    @PostMapping("/reserve/shared")
 //    @ResponseBody

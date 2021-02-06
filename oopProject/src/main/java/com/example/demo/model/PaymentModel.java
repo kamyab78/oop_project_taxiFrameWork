@@ -8,6 +8,23 @@ public class PaymentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getCost() {
+        return cost;
+    }
+
+    public void setCost(Long cost) {
+        this.cost = cost;
+    }
+
     @Column(name = "cost")
     private Long cost;
     @OneToOne
@@ -17,21 +34,9 @@ public class PaymentModel {
     @JoinColumn(name = "reserve_id")
     private ReserveModel reserveModel;
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public long getCost() {
-        return cost;
-    }
 
-    public void setCost(long amount) {
-        this.cost = amount;
-    }
 
     public UserModel getUserModel() {
         return userModel;
